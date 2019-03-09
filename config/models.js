@@ -50,7 +50,7 @@ module.exports.models = {
    *                                                                          *
    ***************************************************************************/
 
-  migrate: "safe",
+  migrate: 'safe',
 
   /***************************************************************************
    *                                                                          *
@@ -65,9 +65,9 @@ module.exports.models = {
    ***************************************************************************/
 
   attributes: {
-    createdAt: { type: "number", autoCreatedAt: true },
-    updatedAt: { type: "number", autoUpdatedAt: true },
-    id: { type: "string", columnName: "_id" } //--------------------------------------------------------------------------
+    createdAt: { type: 'number', autoCreatedAt: true },
+    updatedAt: { type: 'number', autoUpdatedAt: true },
+    id: { type: 'string', columnName: '_id' }, //--------------------------------------------------------------------------
     //  /\   Using MongoDB?
     //  ||   Replace `id` above with this instead:
     //
@@ -95,7 +95,7 @@ module.exports.models = {
    ******************************************************************************/
 
   dataEncryptionKeys: {
-    default: "xtvx0j/EJVkZZsPxVH+0B/VhgGyyu9Rerrfq2C5S6pA="
+    default: 'xtvx0j/EJVkZZsPxVH+0B/VhgGyyu9Rerrfq2C5S6pA=',
   },
 
   /***************************************************************************
@@ -111,5 +111,5 @@ module.exports.models = {
    *                                                                          *
    ***************************************************************************/
 
-  cascadeOnDestroy: true
+  cascadeOnDestroy: true,
 };

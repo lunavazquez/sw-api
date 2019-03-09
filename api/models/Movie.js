@@ -10,15 +10,15 @@ module.exports = {
     movieName: {
       type: 'string',
       required: true,
-      unique: true,
     },
     poster: {
       type: 'string',
-      required: true,
+      defaultsTo: '',
     },
     episode: {
       type: 'string',
       required: true,
+      unique: true,
     },
   },
 };

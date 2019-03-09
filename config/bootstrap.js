@@ -8,23 +8,37 @@
  * For more information on seeding your app with fake data, check out:
  * https://sailsjs.com/config/bootstrap
  */
+// Importar librerias
+const fetch = require('node-fetch');
+const hash = require('object-hash');
 
 module.exports.bootstrap = async function() {
-
-  // By convention, this is a good place to set up fake data during development.
-  //
-  // For example:
-  // ```
-  // // Set up fake development data (or if we already have some, avast)
-  // if (await User.count() > 0) {
-  //   return;
-  // }
-  //
-  // await User.createEach([
-  //   { emailAddress: 'ry@example.com', fullName: 'Ryan Dahl', },
-  //   { emailAddress: 'rachael@example.com', fullName: 'Rachael Shaw', },
-  //   // etc.
-  // ]);
-  // ```
-
+  // Obtener listado de movies
+  const movies = await fetch('https://swapi.co/api/films/').then(response => response.json());
+  for (let movie of movies.results) {
+    // Guardar movie en db con el metodo encuentra o crea
+    await Movie.findOrCreate(
+      {
+        episode: movie.episode_id,
+      },
+      {
+        movieName: movie.title,
+        episode: movie.episode_id,
+      },
+    );
+    for (let starshipUrl of movie.starships) {
+      const starship = await fetch(starshipUrl).then(response => response.json());
+      const starshipId = hash(starship.name + movie.episode_id);
+      await Starship.findOrCreate(
+        { starshipId },
+        {
+          starshipId,
+          episodeId: movie.episode_id,
+          starshipName: starship.name,
+          model: starship.model,
+          passengers: starship.passengers,
+        },
+      );
+    }
+  }
 };

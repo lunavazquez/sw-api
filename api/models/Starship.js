@@ -7,17 +7,25 @@
 
 module.exports = {
   attributes: {
-    starshipName: {
+    starshipId: {
       type: 'string',
       required: true,
       unique: true,
+    },
+    starshipName: {
+      type: 'string',
+      required: true,
     },
     model: {
       type: 'string',
       required: true,
     },
     passengers: {
-      type: 'number',
+      type: 'string',
+      defaultsTo: '',
+    },
+    episodeId: {
+      type: 'string',
       required: true,
     },
     pilot: {
