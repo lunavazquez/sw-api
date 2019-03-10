@@ -14,6 +14,7 @@ const hash = require('object-hash');
 
 module.exports.bootstrap = async function() {
   // Obtener listado de movies
+  return;
   const movies = await fetch('https://swapi.co/api/films/').then(response => response.json());
   for (let movie of movies.results) {
     // Guardar movie en db con el metodo encuentra o crea

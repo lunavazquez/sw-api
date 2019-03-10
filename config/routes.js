@@ -9,6 +9,10 @@
  */
 
 module.exports.routes = {
-
-
+  //  Metodos de  peticion http
+  //  Read
+  'GET /swapi/starship/list/:episodeId': 'starship/list',
+  'GET /swapi/movie/list': 'movie/list',
+  //  Edit
+  'PUT /swapi/starship/edit/:starshipId': 'starship/edit',
 };
